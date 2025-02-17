@@ -25,7 +25,7 @@ export default function AllRecipes(props) {
         .then(res => res.json())
         .then(data => {
             setPizza(data);
-            console.log(Stopwatch.get(), "Received pizza; remember, it may not be committed quite yet!", pizza);
+            console.log(Stopwatch.get(), "T: An update to pizza has been triggered!", pizza);
         })
 
         fetch("https://cs571api.cs.wisc.edu/rest/s25/ice/pasta", {
@@ -36,7 +36,7 @@ export default function AllRecipes(props) {
         .then(res => res.json())
         .then(data => {
             setPasta(data);
-            console.log(Stopwatch.get(), "Received pasta; remember, it may not be committed quite yet!", pasta);
+            console.log(Stopwatch.get(), "T: An update to pasta has been triggered!", pasta);
         })
 
         fetch("https://cs571api.cs.wisc.edu/rest/s25/ice/chili", {
@@ -47,43 +47,43 @@ export default function AllRecipes(props) {
         .then(res => res.json())
         .then(data => {
             setChili(data);
-            console.log(Stopwatch.get(), "Received chili; remember, it may not be committed quite yet!", chili);
+            console.log(Stopwatch.get(), "T: An update to chili has been triggered!", chili);
         })
 
-        console.log(Stopwatch.get(), "The AllRecipes component has mounted.")
+        console.log(Stopwatch.get(), "C: The AllRecipes component has mounted.")
     }, []);
 
     useEffect(() => {
         if (pizza) { // remember this gets ran on mount and dependency change, check just for dependency change!
-            console.log(Stopwatch.get(), "Now, pizza has been committed.", pizza)
+            console.log(Stopwatch.get(), "C: Now, pizza has been committed.", pizza)
         }
     }, [pizza]);
 
     useEffect(() => {
         if (pasta) { // remember this gets ran on mount and dependency change, check just for dependency change!
-            console.log(Stopwatch.get(), "Now, pasta has been committed.", pasta)
+            console.log(Stopwatch.get(), "C: Now, pasta has been committed.", pasta)
         }
     }, [pasta]);
 
     useEffect(() => {
-        if (pasta) { // remember this gets ran on mount and dependency change, check just for dependency change!
-            console.log(Stopwatch.get(), "Now, chili has been committed.", chili)
+        if (chili) { // remember this gets ran on mount and dependency change, check just for dependency change!
+            console.log(Stopwatch.get(), "C: Now, chili has been committed.", chili)
         }
     }, [chili]);
 
-    // useEffect(() => {
-    //     if (chili || pizza || pasta) {
-    //         console.log(Stopwatch.get(), "Now, something has been committed in AllRecipes!")
-    //     }
-    // }, [chili, pizza, pasta]);
+    useEffect(() => {
+        if (chili || pizza || pasta) {
+            console.log(Stopwatch.get(), "C: Now, something has been committed in AllRecipes!")
+        }
+    }, [chili, pizza, pasta]);
 
-    // useEffect(() => {
-    //     if (chili && pizza && pasta) {
-    //         console.log(Stopwatch.get(), "Now, everything has been committed in AllRecipes!")
-    //     }
-    // }, [chili, pizza, pasta]);
+    useEffect(() => {
+        if (chili && pizza && pasta) {
+            console.log(Stopwatch.get(), "C: Now, everything has been committed in AllRecipes!")
+        }
+    }, [chili, pizza, pasta]);
 
-    console.log(Stopwatch.get(), "AllRecipes is re-rendering!")
+    console.log(Stopwatch.get(), "R: AllRecipes is re-rendering!")
 
     return <div>
         <h1>Welcome to Badger Recipes!</h1>

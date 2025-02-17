@@ -11,16 +11,14 @@ export default function Recipe(props) {
     }
 
     useEffect(() => {
-        console.log(Stopwatch.get(), `Recipe component has mounted for ${props.name ?? "anonymous"} recipe!`)
-    }, []);
-
-    useEffect(() => {
         if (likes > 0) { // remember this gets ran on mount and dependency change, check just for dependency change!
-            console.log(Stopwatch.get(), `The number of likes has committed for ${props.name ?? "anonymous"} recipe!`)
+            console.log(Stopwatch.get(), `C: The number of likes has committed for ${props.name ?? "anonymous"} recipe!`)
+        } else {
+            console.log(Stopwatch.get(), `C: Recipe component has mounted for ${props.name ?? "anonymous"} recipe!`)
         }
     }, [likes]);
 
-    console.log(Stopwatch.get(), `${props.name ?? "anonymous"} Recipe is re-rendering!`)
+    console.log(Stopwatch.get(), `R: ${props.name ?? "anonymous"} Recipe is re-rendering!`)
 
     return <Card style={{margin: "auto", marginTop: "1rem", maxWidth: "40rem"}}>
         {
